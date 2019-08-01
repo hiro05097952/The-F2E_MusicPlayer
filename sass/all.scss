@@ -1,0 +1,438 @@
+@import "_reset";
+
+
+body{
+    background-color: #FCFBF6;
+    font-family: 'Roboto', sans-serif;
+    #app{
+        .page1{
+            height: 100vh;
+            .head{
+                height: 70px;
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                .icon{
+                    margin-left: 77px;
+                    margin-right: 18px;
+                    width: 120px;
+                    height: 37px;
+                    background: url(../image/LOGO.svg) center center no-repeat;
+                    background-size: cover;
+                }
+                ul{
+                    display: flex;
+                    font-size: 14px;
+                    color: #AEAEAE;
+                    font-weight: 800;
+                    li:hover, li.active{
+                        color: #707070;
+                    }
+                    &.nav{
+                        li{
+                            margin-left: 18%;
+                            cursor: pointer;
+                        }
+                        margin-right: auto;
+                    }
+                    &.acount{
+                        margin-right: 30px;
+                        li{
+                            margin-right: 30px;
+                            align-self: center;
+                            cursor: pointer;
+                            a{
+                                display: inline-block;
+                                width: 48px;
+                                height: 48px;
+                                background: url(../image/icon_member.svg) center center no-repeat;
+                                background-size: cover;
+                            }
+                        }
+                    }
+                }
+        
+            }
+            .body{
+                padding: 0 15%;
+                display: flex;
+                ul.playingSong{
+                    li{
+                        text-align: center;
+                        img{
+                            width: 300px;
+                            height: 300px;
+                        }
+                        &.songName{
+                            font-size: 20px;
+                            color: #707070;
+                            margin: 10px 0 10px;
+                            font-weight: 600;
+                        }
+                        &.player, &.issueDate{
+                            font-size: 18px;
+                            color: #AEAEAE;
+                        }
+                        &.issueDate{
+                            font-size: 14px;
+                            margin-top: 10px;
+                        }
+                    }
+                }
+                ul.list{
+                    margin-left: 8%;
+                    width: 472px;
+                    padding-top: 10px;
+                    li{
+                        display: flex;
+                        align-items: center;
+                        border-bottom: 1px solid rgba(174, 174, 174, 0.4);
+                        font-size: 14px;
+                        height: 60px;
+                        padding: 0 4%;
+                        p{
+                            color: #AEAEAE;
+                            margin-right: 27px;
+                        }
+                        h2{
+                            color: #707070;
+                            font-size: 16px;
+                            font-weight: 600;
+                            margin-right: auto;
+                            cursor: pointer;
+                        }
+                        a{
+                            display: inline-block;
+                            background: url(../image/icon_heart1.svg) center center no-repeat;
+                            background-size: cover;
+                            width: 17px;
+                            height: 17px;
+                            &.fav{
+                                background: url(../image/icon_heart2.svg) center center no-repeat;
+                                background-size: cover;
+                            }
+                        }
+                    }
+                }
+            }
+            .playBar{
+                width: 100vw;
+                height: 78px;
+                background: url(../image/player_background@2x.png) center center repeat;
+                position: fixed;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                overflow: auto;
+                ul.playingSongSmall{
+                    margin-left: 5%;
+                    display: flex;
+                    align-items: center;
+                    li{
+                        color: #707070;
+                        text-align: center;
+                        img{
+                            width: 46px;
+                            height: 46px;
+                        }
+                        p.songName{
+                            font-size: 16px;
+                            font-weight: 800;
+                            filter: drop-shadow(0 3px 6px #00000016);
+                        }
+                        p.player{
+                            font-size: 13px;
+                            font-weight: 800;
+                            margin-top: 5px;
+                            filter: drop-shadow(0 3px 6px #00000016);
+                        }
+                        &:nth-child(2){
+                            margin-left: 5px;
+                            width: 140px;
+                        }
+                    }
+                }
+                ul.controlBar{
+                    margin-top: 10px;
+                    display: flex;
+                    align-items: center;
+                    li{
+                        margin-left: 15px;
+                        font-size: 14px;
+                        color: #707070;
+                        a{
+                           display: inline-block;
+                           width: 35px;
+                           height: 35px;
+                        }
+                        p{
+                            margin-bottom: 10px;
+                        }
+                        &.pre a{
+                           background: url(../image/icon_lastsong.svg) center center no-repeat;
+                           background-size: cover;
+                        }
+                        &.play{
+                            a{
+                                width: 40px;
+                                height: 40px;
+                                background: url(../image/icon_play.svg) center center no-repeat;
+                                background-size: cover;
+                                &.isPlay{
+                                    background: url(../image/icon_pause.svg) center center no-repeat;
+                                    background-size: cover;
+                                }
+                            }
+                        } 
+                        &.next{
+                            margin-left: 8px;
+                            a{
+                                background: url(../image/icon_nextsong.svg) center center no-repeat;
+                                background-size: cover;
+                            }
+                        }
+                        &.songProgress{
+                            margin-bottom: 8px;
+                            cursor: pointer;
+                            position: relative;
+                            width: 401px;
+                            overflow: hidden;
+                            a.line, a.preproLine{
+                                position: absolute;
+                                top: 6px;
+                                height: 3px;
+                                background-color: #707070;
+                                width: 0;
+                            }
+                            a.preproLine{
+                                background-color: #70707050;
+                                width: 0;
+                            }
+                            input[type="range"]{
+                                width: 400px;
+                                height: 10px;
+                                appearance: none;
+                                outline: none;
+                                border: none;
+                                box-shadow: inset 0 -3px 0 #c8b7a5,
+                                inset 0 4px 0 #c8b7a5;
+                                background-color: #70707040;
+                                margin: 0;
+                                cursor: pointer;
+                                &::-webkit-slider-thumb{
+                                    appearance: none;
+                                    height: 10px;
+                                    width: 3px;
+                                    background: url(../image/icon_playercontroller.svg) center center no-repeat;
+                                    background-size: cover;
+                                }
+                            }
+                        }
+                        &.repeat{
+                            position: relative;
+                            a{
+                                background: url(../image/icon_repeat.svg) center center no-repeat;
+                                background-size: cover;
+                                filter: opacity(0.5);
+                                &:hover, &:active{
+                                    filter: none;
+                                }
+                            }
+                            &.repeatOne{
+                                a{
+                                    filter: none;
+                                }
+                                &::after{
+                                    content: '1';
+                                    font-size: 16px;
+                                    color: #707070;
+                                    position: absolute;
+                                    bottom: 8px;
+                                    right: -1px;
+                                    transform: scale(0.6);
+                                }
+                            }
+                            &.repeatAll{
+                                a{
+                                    filter: none;
+                                }
+                            }
+                        }
+                        &.shuffle{
+                            margin-left: 0;
+                            a{
+                                background: url(../image/icon_shuffle.svg) center center no-repeat;
+                                background-size: cover;
+                                filter: opacity(0.5);
+                                &:hover, &:active{
+                                    filter: none;
+                                }
+                            }
+                            &.actived{
+                                a{
+                                    filter: none;
+                                }
+                            }
+                        }
+                        &.volume{
+                            margin-left: 30px;
+                            position: relative;
+                            a{
+                                background: url(../image/icon_volume.svg) center center no-repeat;
+                                background-size: cover;
+                            }
+                            &.muted::after{
+                                content: '|';
+                                position: absolute;
+                                font-size: 25px;
+                                font-weight: 900;
+                                left: 12px;
+                                top: 1px;
+                                transform: rotate(-48deg);
+                                text-shadow: 1px 0 #c8b7a5, 0 1px #c8b7a5, 
+                                -1px 0 #c8b7a5, 0 -1px #c8b7a5;
+                                cursor: pointer;
+                            }
+                        }
+                        &.volumeBar{
+                            margin-left: 0;
+                            width: 100px;
+                            overflow: hidden;
+                            position: relative;
+                            cursor: pointer;
+                            a.line{
+                                position: absolute;
+                                left: 0;
+                                top: 6px;
+                                background-color: #707070;
+                                height: 3px;
+                                width: 100px;
+                                pointer-events: none;
+                            }
+                            input[type="range"]{
+                                width: 100px;
+                                height: 10px;
+                                margin: 0;
+                                margin-bottom: 8px;
+                                appearance: none;
+                                outline: none;
+                                border: none;
+                                cursor: pointer;
+                                background-color: #70707040;
+                                box-shadow: inset 0 -3px 0 #c8b7a5,
+                                inset 0 4px 0 #c8b7a5;
+                                &::-webkit-slider-thumb{
+                                    appearance: none;
+                                    height: 10px;
+                                    width: 3px;
+                                    background: url(../image/icon_playercontroller.svg) center center no-repeat;
+                                    background-size: cover;
+                                }
+                            }
+                        }
+                   } 
+                }
+            }
+        }
+        .page2{
+            height: 100vh;
+            padding: 3% 15% 0;
+            box-sizing: border-box;
+            h2{
+                color: #707070;
+                font-size: 20px;
+                font-weight: 900;
+                line-height: 40px;
+                margin-bottom: 10px;
+            }
+            .videoWrap{
+                a{
+                    display: inline-block;
+                    height: 170px;
+                    width: 310px;
+                    background: url(../image/album_musicvideo@2x.png) center center no-repeat;
+                    background-size: cover;
+                }
+            }
+            .albums{
+                margin-top: 10px;
+                ul{
+                    display: flex;
+                    li{
+                        margin-left: 5%;
+                        &:nth-child(1){
+                            margin-left: 5px;
+                        }
+                        a{
+                            img{
+                                height: 115px;
+                                width: 115px;
+                                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+                            }
+                        }
+                        h3{
+                            width: 115px;
+                            margin-top: 8px;
+                            text-align: center;
+                            color: #707070;
+                            font-size: 14px;
+                            cursor: pointer;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+        .adWrap{
+            height: 100vh;
+            width: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0;
+            background-color: #70707030;
+            z-index: 100;
+            .ad{
+                width: 60%;
+                height: 65%;
+                background: url(../image/album_cover@2x.png) center center no-repeat;
+                background-size: cover;
+                margin: 6% auto;
+                position: relative;
+                ul{
+                    position: absolute;
+                    right: 2em;
+                    bottom: 1.5em;
+                    width: 152px;
+                    li{
+                        font-size: 14px;
+                        color: white;
+                        text-align: center;
+                        font-weight: 800;
+                        margin-top: 1em;
+                        &:nth-child(2){
+                            a{
+                                display: inline-block;
+                                width: 151px;
+                                height: 44px;
+                                background: url(../image/bottom_suscribe.svg) center center no-repeat;
+                                background-size: cover;
+                            }
+                        }
+                        &:nth-child(3){
+                            margin-top: 5px;
+                            a{
+                                margin-top: 5px;
+                                color: #AEAEAE;
+                                &:hover, &:active{
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

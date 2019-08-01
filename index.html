@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The F2E - Music Player</title>
+    <script src="js/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="page1">
+            <div class="head">
+                    <a href="#" class="icon"></a>
+                    <ul class="nav">
+                        <li :class="{'active':nav ==='news'}">NEWS</li>
+                        <li :class="{'active':nav ==='music'}">MUSIC</li>
+                        <li :class="{'active':nav ==='video'}">VIDEO</li>
+                        <li :class="{'active':nav ==='artist'}">ARTIST</li>
+                        <li :class="{'active':nav ==='events'}">EVENTS</li>
+                        <li :class="{'active':nav ==='contact'}">CONTACT</li>
+                    </ul>
+                    <ul class="acount">
+                        <li>MY LIST</li>
+                        <li><a href="#"></a></li>
+                    </ul>
+            </div>
+        
+            <div class="body">
+                <ul class="playingSong">
+                    <li class="cover"><img src="image/album_1@2x.png"></li>
+                    <li class="songName">{{playing.Title}}</li>
+                    <li class="player">{{playing.player}}</li>
+                    <li class="issueDate">2017 - Apr</li>
+                </ul>
+        
+                <ul class="list">
+                    <li v-for="(item, key) in music">
+                        <p>{{ key+1 }}</p>
+                        <h2 @click="changeSongbyTitle(key)">{{ item.title }}</h2>
+                        <a href="#" :class="{'fav': item.favorite}" @click.prevent="item.favorite = !item.favorite"></a>
+                    </li>
+                    <!-- <li>
+                        <p>1</p>
+                        <h2>dlwlrma</h2>
+                        <a class="liked" href="#"></a>
+                    </li>
+                    <li>
+                        <p>2</p>
+                        <h2>Palette(Feat. G-DRAGON)</h2>
+                        <a href="#"></a>
+                    </li> -->
+                </ul>
+            </div>
+        
+            <div class="playBar">
+                <ul class="playingSongSmall">
+                    <li class="cover"><img src="image/album_1@2x.png"></li>
+                    <li>
+                        <p class="songName">{{playing.title}}</p>
+                        <p class="player">{{playing.player}}</p>
+                    </li>
+                </ul>
+                <ul class="controlBar">
+                    <li class="pre"><a href="#" @click.prevent="changeSong(-1)"></a></li>
+                    <li class="play"><a href="#" @click.prevent="playMusic" :class="{'isPlay':status.isPlay}"></a></li>
+                    <li class="next"><a href="#" @click.prevent="changeSong(1)"></a></li>
+                    <li class="songStart"><p>{{status.currentTime}}</p></li>
+                    <li class="songProgress" @mousemove="(e)=>{seekStyle.preproLine = {width: `${e.layerX}px`}}" 
+                        @mouseout="(e)=>{seekStyle.preproLine = {}}" @click="seeked">
+                        <a href="#" class="line" :style="seekStyle.line" @click.prevent></a>
+                        <input type="range" min="0" max="400" :value="seekStyle.cursor" step="1" class="cursor">
+                        <a href="#" class="preproLine" :style="seekStyle.preproLine" @click.prevent></a>
+                    </li>
+                    <li class="songEnd"><p>{{status.duration}}</p></li>
+                    <li class="repeat" :class="{'repeatOne': status.repeatMode ==='repeatOne', 'repeatAll':status.repeatMode ==='repeatAll'}">
+                        <a href="#" @click.prevent="changeRepeat"></a>
+                    </li>
+                    <li class="shuffle" :class="{'actived': status.shuffleMode}">
+                        <a href="#" @click.prevent="status.shuffleMode = !status.shuffleMode"></a>
+                    </li>
+                    <li class="volume" :class="{'muted':status.muted}" @click.prevent="audioMute"><a href="#" @click.prevent></a></li>
+                    <li class="volumeBar" >
+                        <input type="range" min="0" max="100" step="10" value="100" @click="volumeChange">
+                        <a href="#" class="line" :style="volumeStyle.line" @click.prevent></a>
+                    </li>
+                </ul>                
+                <audio :src="playing.src" type="audio/mpeg" class="audio" 
+                :loop="status.repeatMode === 'repeatOne'" 
+                @durationchange="getDuration" ref="audio" @timeupdate="getCurrentTime" @ended="playout"></audio>
+            </div>
+
+        </div>
+
+        <div class="page2">
+
+            <div class="videoWrap">
+                <h2>Music Videos</h2>
+                <a href="#"></a>
+            </div>
+
+            <div class="albums">
+                <h2>New Albums</h2>
+                <ul>
+                    <li v-for="(item, key) in album">
+                        <a href="#"><img :src="item.src" alt=""></a>
+                        <h3>{{item.name}}</h3>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="adWrap" v-if="isAD">
+            <div class="ad">
+                <ul>
+                    <li>Best online music player for listening song's</li>
+                    <li><a href="#" @click.prevent></a></li>
+                    <li><a href="#" @click.prevent="isAD = !isAD">Ask me later</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data:{
+                nav: 'music',
+                music:[{
+                    title:`Title`,
+                    src: `music/Title.mp3`,
+                    player: `Ragnarok Online`,
+                    favorite: false,
+                },
+                {
+                    title:`Theme of Juno`,
+                    src: `music/Theme of Juno.mp3`,
+                    player: `Ragnarok Online`,
+                    favorite: false,
+                },
+                {
+                    title:`Theme of Morroc`,
+                    src: `music/Theme of Morroc.mp3`,
+                    player: `Ragnarok Online`,
+                    favorite: false,
+                },
+                {
+                    title:`Theme of Payon`,
+                    src: `music/Theme of Payon.mp3`,
+                    player: `Ragnarok Online`,
+                    favorite: false,
+                },
+                {
+                    title:`Theme of Prontera`,
+                    src: `music/Theme of Prontera.mp3`,
+                    player: `Ragnarok Online`,
+                    favorite: false,
+                },
+                {
+                    title:`Tread on the ground`,
+                    src: `music/Tread on the ground.mp3`,
+                    player: `Ragnarok Online`,
+                    favorite: false,
+                },
+                ],
+                playing: {
+                    title: `Title`,
+                    src: `music/Title.mp3`,
+                    player: `Ragnarok Online`,
+                    favorite: false,
+                },
+                status:{
+                    progress: '',
+                    isPlay: false,
+                    repeatMode: 'no-repeat',
+                    shuffleMode: false,
+                    duration: '0:00',
+                    currentTime: '0:00',
+                    randomCache: [],
+                    muted: false,
+                },
+                seekStyle:{
+                    preproLine:{},
+                    cursor: 0,
+                    line:{},
+                },
+                volumeStyle:{
+                    volume: 100,
+                    line:{},
+                },
+                album:[{
+                    name: `BBIBBI`,
+                    src: `image/album_2@2x.png`,
+                },
+                {
+                    name: `SMASH HITS 2`,
+                    src: `image/album_3@2x.png`,
+                },
+                {
+                    name: `SoulMate`,
+                    src: `image/album_4@2x.png`,
+                },
+                {
+                    name: `Flower Bookmark`,
+                    src: `image/album_5@2x.png`,
+                },
+                {
+                    name: `CHAT-SHIRE`,
+                    src: `image/album_6@2x.png`,
+                },
+                ],
+                isAD: false,
+            },
+            methods:{
+                playMusic: function(){
+                    let audio = document.querySelector('.audio');
+                    audio.paused ? audio.play() : audio.pause()
+                    this.status.isPlay = !audio.paused
+                },
+                changeSong: function(value){
+                    let vm = this
+                    let oldIndex = this.music.map((item)=>{return item.title}).indexOf(this.playing.title)
+                    let newIndex = Math.floor(Math.random() * vm.music.length)
+
+                    new Promise((resolve, reject)=>{
+
+                        if(!vm.status.shuffleMode && vm.music[oldIndex+value]){
+                            // 一般模式
+                            vm.playing = vm.music[oldIndex+value]
+                        }else if(vm.status.shuffleMode && vm.status.repeatMode === 'repeatAll'){
+                            // 隨機模式 + 重複全部
+                            vm.status.randomCache.push(oldIndex)
+                            if(vm.status.randomCache.length === vm.music.length){
+                                vm.status.randomCache = []
+                            }
+
+                            while (vm.status.randomCache.indexOf(newIndex) !== -1) {
+                                newIndex = Math.floor(Math.random() * vm.music.length)
+                            }
+                            vm.playing = vm.music[newIndex]
+                        }else if(vm.status.shuffleMode){
+                            // 隨機模式
+                            while (newIndex === oldIndex) {
+                                newIndex = Math.floor(Math.random() * vm.music.length)
+                            }
+                            vm.playing = vm.music[newIndex]
+                        }else{
+                            vm.playing = vm.music[0]
+                        }
+
+                        if(vm.status.isPlay){
+                            resolve();
+                        }
+                    }) 
+                    .then(()=>{
+                        vm.playMusic();
+                    })
+                },
+                changeSongbyTitle: function(key){
+                    let vm = this
+                    new Promise((resolve, reject)=>{
+                        vm.playing = vm.music[key]
+                        resolve();
+                    }) 
+                    .then(()=>{
+                        vm.playMusic();
+                    })
+                },
+                changeRepeat: function(){
+                    switch (this.status.repeatMode) {
+                        case 'no-repeat':
+                            this.status.repeatMode = 'repeatOne'
+                            break;
+                        case 'repeatOne':
+                            this.status.repeatMode = 'repeatAll'
+                            this.status.randomCache =[]
+                            break;
+                        case 'repeatAll':
+                            this.status.repeatMode = 'no-repeat'
+                            break;
+                    }
+                },
+                getDuration: function(){
+                    let audio = document.querySelector('.audio')
+                    let time = audio.duration
+                    this.status.duration = time === 0 ? `0:00` : this.exchange(time)
+                },
+                getCurrentTime: function(){
+                    let time = this.$refs.audio.currentTime
+                    this.status.currentTime = time === 0 ? `0:00` : this.exchange(time)
+
+                    // 換算duration秒數
+                    let newArr = this.status.duration.split(':')
+                    let duration = Number(newArr[0]*60) + Number(newArr[1])
+                    // style變換
+                    this.seekStyle.line = {width: `${time/duration * 397}px`}
+                    this.seekStyle.cursor = Math.floor(time/duration * 400)              
+                },
+                exchange: function(time){
+                    let second = Math.floor(time % 60)
+                    second = second < 10 ? '0'+ String(second) : second
+                    return Math.floor(time/60) + `:` + second                    
+                },
+                playout: function(){
+                    let vm = this
+                    let nowSong = vm.music.map((item)=>{return item.title}).indexOf(vm.playing.title)
+                    if(Math.random() > 0.95){this.isAD = true}
+                    if(nowSong = vm.music.length-1 && vm.status.repeatMode === 'no-repeat'){
+                        // 普通模式播到最後一首時不重播
+                        return
+                    }else if(vm.status.repeatMode ==='repeatOne'){
+                        // 重複一首模式下不做更動
+                        return
+                    }else if(vm.status.shuffleMode){
+                        // 隨機模式下，隨機跳下一首(但不與目前重複)
+                        vm.changeSong();
+                    }else{
+                        // 排除特殊模式，正常跳下一首
+                        vm.changeSong(1);
+                    }
+                },
+                audioMute: function(){
+                    let audio = document.querySelector('.audio')
+                    audio.muted = !audio.muted
+                    this.status.muted = audio.muted
+                },
+                seeked: function(e){
+                    // 換算duration秒數
+                    let newArr = this.status.duration.split(':')
+                    let duration = Number(newArr[0]*60) + Number(newArr[1])
+                    // 換算比例                                        
+                    this.$refs.audio.currentTime = Math.floor((e.layerX / 400) * duration)
+                    // style變換
+                    this.seekStyle.line = {width: `${e.layerX}px`}
+                    this.seekStyle.cursor = Math.floor(e.layerX/397 * duration)
+                },
+                volumeChange: function(e){
+                    let audio = document.querySelector('.audio')                    
+                    let direction = e.target.value
+
+                    this.volumeStyle.line = {width: `${direction}px`}
+                    
+                    this.volumeStyle.volume = direction
+                    audio.volume = direction / 100
+                },
+            },
+        })
+    </script>
+
+</body>
+</html>

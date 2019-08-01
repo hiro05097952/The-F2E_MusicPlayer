@@ -1,0 +1,594 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  background-color: #FCFBF6;
+  font-family: 'Roboto', sans-serif;
+}
+
+body #app .page1 {
+  height: 100vh;
+}
+
+body #app .page1 .head {
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+body #app .page1 .head .icon {
+  margin-left: 77px;
+  margin-right: 18px;
+  width: 120px;
+  height: 37px;
+  background: url(../image/LOGO.svg) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .page1 .head ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 14px;
+  color: #AEAEAE;
+  font-weight: 800;
+}
+
+body #app .page1 .head ul li:hover, body #app .page1 .head ul li.active {
+  color: #707070;
+}
+
+body #app .page1 .head ul.nav {
+  margin-right: auto;
+}
+
+body #app .page1 .head ul.nav li {
+  margin-left: 18%;
+  cursor: pointer;
+}
+
+body #app .page1 .head ul.acount {
+  margin-right: 30px;
+}
+
+body #app .page1 .head ul.acount li {
+  margin-right: 30px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  cursor: pointer;
+}
+
+body #app .page1 .head ul.acount li a {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  background: url(../image/icon_member.svg) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .page1 .body {
+  padding: 0 15%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body #app .page1 .body ul.playingSong li {
+  text-align: center;
+}
+
+body #app .page1 .body ul.playingSong li img {
+  width: 300px;
+  height: 300px;
+}
+
+body #app .page1 .body ul.playingSong li.songName {
+  font-size: 20px;
+  color: #707070;
+  margin: 10px 0 10px;
+  font-weight: 600;
+}
+
+body #app .page1 .body ul.playingSong li.player, body #app .page1 .body ul.playingSong li.issueDate {
+  font-size: 18px;
+  color: #AEAEAE;
+}
+
+body #app .page1 .body ul.playingSong li.issueDate {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+body #app .page1 .body ul.list {
+  margin-left: 8%;
+  width: 472px;
+  padding-top: 10px;
+}
+
+body #app .page1 .body ul.list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid rgba(174, 174, 174, 0.4);
+  font-size: 14px;
+  height: 60px;
+  padding: 0 4%;
+}
+
+body #app .page1 .body ul.list li p {
+  color: #AEAEAE;
+  margin-right: 27px;
+}
+
+body #app .page1 .body ul.list li h2 {
+  color: #707070;
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+body #app .page1 .body ul.list li a {
+  display: inline-block;
+  background: url(../image/icon_heart1.svg) center center no-repeat;
+  background-size: cover;
+  width: 17px;
+  height: 17px;
+}
+
+body #app .page1 .body ul.list li a.fav {
+  background: url(../image/icon_heart2.svg) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .page1 .playBar {
+  width: 100vw;
+  height: 78px;
+  background: url(../image/player_background@2x.png) center center repeat;
+  position: fixed;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: auto;
+}
+
+body #app .page1 .playBar ul.playingSongSmall {
+  margin-left: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body #app .page1 .playBar ul.playingSongSmall li {
+  color: #707070;
+  text-align: center;
+}
+
+body #app .page1 .playBar ul.playingSongSmall li img {
+  width: 46px;
+  height: 46px;
+}
+
+body #app .page1 .playBar ul.playingSongSmall li p.songName {
+  font-size: 16px;
+  font-weight: 800;
+  -webkit-filter: drop-shadow(0 3px 6px #00000016);
+          filter: drop-shadow(0 3px 6px #00000016);
+}
+
+body #app .page1 .playBar ul.playingSongSmall li p.player {
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 5px;
+  -webkit-filter: drop-shadow(0 3px 6px #00000016);
+          filter: drop-shadow(0 3px 6px #00000016);
+}
+
+body #app .page1 .playBar ul.playingSongSmall li:nth-child(2) {
+  margin-left: 5px;
+  width: 140px;
+}
+
+body #app .page1 .playBar ul.controlBar {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body #app .page1 .playBar ul.controlBar li {
+  margin-left: 15px;
+  font-size: 14px;
+  color: #707070;
+}
+
+body #app .page1 .playBar ul.controlBar li a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+}
+
+body #app .page1 .playBar ul.controlBar li p {
+  margin-bottom: 10px;
+}
+
+body #app .page1 .playBar ul.controlBar li.pre a {
+  background: url(../image/icon_lastsong.svg) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .page1 .playBar ul.controlBar li.play a {
+  width: 40px;
+  height: 40px;
+  background: url(../image/icon_play.svg) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .page1 .playBar ul.controlBar li.play a.isPlay {
+  background: url(../image/icon_pause.svg) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .page1 .playBar ul.controlBar li.next {
+  margin-left: 8px;
+}
+
+body #app .page1 .playBar ul.controlBar li.next a {
+  background: url(../image/icon_nextsong.svg) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .page1 .playBar ul.controlBar li.songProgress {
+  margin-bottom: 8px;
+  cursor: pointer;
+  position: relative;
+  width: 401px;
+  overflow: hidden;
+}
+
+body #app .page1 .playBar ul.controlBar li.songProgress a.line, body #app .page1 .playBar ul.controlBar li.songProgress a.preproLine {
+  position: absolute;
+  top: 6px;
+  height: 3px;
+  background-color: #707070;
+  width: 0;
+}
+
+body #app .page1 .playBar ul.controlBar li.songProgress a.preproLine {
+  background-color: #70707050;
+  width: 0;
+}
+
+body #app .page1 .playBar ul.controlBar li.songProgress input[type="range"] {
+  width: 400px;
+  height: 10px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  border: none;
+  -webkit-box-shadow: inset 0 -3px 0 #c8b7a5, inset 0 4px 0 #c8b7a5;
+          box-shadow: inset 0 -3px 0 #c8b7a5, inset 0 4px 0 #c8b7a5;
+  background-color: #70707040;
+  margin: 0;
+  cursor: pointer;
+}
+
+body #app .page1 .playBar ul.controlBar li.songProgress input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  height: 10px;
+  width: 3px;
+  background: url(../image/icon_playercontroller.svg) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .page1 .playBar ul.controlBar li.repeat {
+  position: relative;
+}
+
+body #app .page1 .playBar ul.controlBar li.repeat a {
+  background: url(../image/icon_repeat.svg) center center no-repeat;
+  background-size: cover;
+  -webkit-filter: opacity(0.5);
+          filter: opacity(0.5);
+}
+
+body #app .page1 .playBar ul.controlBar li.repeat a:hover, body #app .page1 .playBar ul.controlBar li.repeat a:active {
+  -webkit-filter: none;
+          filter: none;
+}
+
+body #app .page1 .playBar ul.controlBar li.repeat.repeatOne a {
+  -webkit-filter: none;
+          filter: none;
+}
+
+body #app .page1 .playBar ul.controlBar li.repeat.repeatOne::after {
+  content: '1';
+  font-size: 16px;
+  color: #707070;
+  position: absolute;
+  bottom: 8px;
+  right: -1px;
+  -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+}
+
+body #app .page1 .playBar ul.controlBar li.repeat.repeatAll a {
+  -webkit-filter: none;
+          filter: none;
+}
+
+body #app .page1 .playBar ul.controlBar li.shuffle {
+  margin-left: 0;
+}
+
+body #app .page1 .playBar ul.controlBar li.shuffle a {
+  background: url(../image/icon_shuffle.svg) center center no-repeat;
+  background-size: cover;
+  -webkit-filter: opacity(0.5);
+          filter: opacity(0.5);
+}
+
+body #app .page1 .playBar ul.controlBar li.shuffle a:hover, body #app .page1 .playBar ul.controlBar li.shuffle a:active {
+  -webkit-filter: none;
+          filter: none;
+}
+
+body #app .page1 .playBar ul.controlBar li.shuffle.actived a {
+  -webkit-filter: none;
+          filter: none;
+}
+
+body #app .page1 .playBar ul.controlBar li.volume {
+  margin-left: 30px;
+  position: relative;
+}
+
+body #app .page1 .playBar ul.controlBar li.volume a {
+  background: url(../image/icon_volume.svg) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .page1 .playBar ul.controlBar li.volume.muted::after {
+  content: '|';
+  position: absolute;
+  font-size: 25px;
+  font-weight: 900;
+  left: 12px;
+  top: 1px;
+  -webkit-transform: rotate(-48deg);
+          transform: rotate(-48deg);
+  text-shadow: 1px 0 #c8b7a5, 0 1px #c8b7a5,  -1px 0 #c8b7a5, 0 -1px #c8b7a5;
+  cursor: pointer;
+}
+
+body #app .page1 .playBar ul.controlBar li.volumeBar {
+  margin-left: 0;
+  width: 100px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+body #app .page1 .playBar ul.controlBar li.volumeBar a.line {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  background-color: #707070;
+  height: 3px;
+  width: 100px;
+  pointer-events: none;
+}
+
+body #app .page1 .playBar ul.controlBar li.volumeBar input[type="range"] {
+  width: 100px;
+  height: 10px;
+  margin: 0;
+  margin-bottom: 8px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: #70707040;
+  -webkit-box-shadow: inset 0 -3px 0 #c8b7a5, inset 0 4px 0 #c8b7a5;
+          box-shadow: inset 0 -3px 0 #c8b7a5, inset 0 4px 0 #c8b7a5;
+}
+
+body #app .page1 .playBar ul.controlBar li.volumeBar input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  height: 10px;
+  width: 3px;
+  background: url(../image/icon_playercontroller.svg) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .page2 {
+  height: 100vh;
+  padding: 3% 15% 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body #app .page2 h2 {
+  color: #707070;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 40px;
+  margin-bottom: 10px;
+}
+
+body #app .page2 .videoWrap a {
+  display: inline-block;
+  height: 170px;
+  width: 310px;
+  background: url(../image/album_musicvideo@2x.png) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .page2 .albums {
+  margin-top: 10px;
+}
+
+body #app .page2 .albums ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body #app .page2 .albums ul li {
+  margin-left: 5%;
+}
+
+body #app .page2 .albums ul li:nth-child(1) {
+  margin-left: 5px;
+}
+
+body #app .page2 .albums ul li a img {
+  height: 115px;
+  width: 115px;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+body #app .page2 .albums ul li h3 {
+  width: 115px;
+  margin-top: 8px;
+  text-align: center;
+  color: #707070;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+body #app .adWrap {
+  height: 100vh;
+  width: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  background-color: #70707030;
+  z-index: 100;
+}
+
+body #app .adWrap .ad {
+  width: 60%;
+  height: 65%;
+  background: url(../image/album_cover@2x.png) center center no-repeat;
+  background-size: cover;
+  margin: 6% auto;
+  position: relative;
+}
+
+body #app .adWrap .ad ul {
+  position: absolute;
+  right: 2em;
+  bottom: 1.5em;
+  width: 152px;
+}
+
+body #app .adWrap .ad ul li {
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  font-weight: 800;
+  margin-top: 1em;
+}
+
+body #app .adWrap .ad ul li:nth-child(2) a {
+  display: inline-block;
+  width: 151px;
+  height: 44px;
+  background: url(../image/bottom_suscribe.svg) center center no-repeat;
+  background-size: cover;
+}
+
+body #app .adWrap .ad ul li:nth-child(3) {
+  margin-top: 5px;
+}
+
+body #app .adWrap .ad ul li:nth-child(3) a {
+  margin-top: 5px;
+  color: #AEAEAE;
+}
+
+body #app .adWrap .ad ul li:nth-child(3) a:hover, body #app .adWrap .ad ul li:nth-child(3) a:active {
+  color: white;
+}
+/*# sourceMappingURL=all.css.map */
