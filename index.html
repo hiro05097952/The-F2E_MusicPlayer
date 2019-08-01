@@ -308,7 +308,7 @@
                 playout: function(){
                     let vm = this
                     let nowSong = vm.music.map((item)=>{return item.title}).indexOf(vm.playing.title)
-                    if(Math.random() > 0.95){this.isAD = true}
+                    if(Math.random() > 0.7){this.isAD = true}
                     if(nowSong = vm.music.length-1 && vm.status.repeatMode === 'no-repeat'){
                         // 普通模式播到最後一首時不重播
                         return
